@@ -1,0 +1,17 @@
+name = "timezone-bot"
+main = "src/index.ts"
+compatibility_date = "2023-05-15"
+usage_model = "bundled"
+env = { }
+compatibility_flags = [ "nodejs_compat" ]
+
+[triggers]
+crons = [ ]
+
+[vars]
+api_url = "ApiURLHere"
+cookie_secret = "CookieSecretHere"
+discord_client_id = "ClientIDHere"
+# discord_token, discord_public_key, discord_client_secret, redis_url & redis_token
+# should be saved through the dashboard and
+# set to encrypted for better security
