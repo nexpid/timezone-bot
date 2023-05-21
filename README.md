@@ -3,6 +3,22 @@
     <h1>Timezone Bot</h1>
 </div>
 
+<p align="center">
+  <a href="https://github.com/Gabe616/timezone-bot/stargazers">
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/Gabe616/timezone-bot?style=for-the-badge&logo=starship&color=5865F2&logoColor=FFF&labelColor=2A2A2A">
+  </a>
+  <a href="https://github.com/Gabe616/timezone-bot/issues">
+    <img alt="Issues" src="https://img.shields.io/github/issues/Gabe616/timezone-bot?style=for-the-badge&logo=gitbook&color=5865F2&logoColor=FFF&labelColor=2A2A2A">
+  </a>
+  <a href="https://github.com/Gabe616/timezone-bot/pull-requests">
+    <img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/Gabe616/timezone-bot?style=for-the-badge&logo=git&color=5865F2&logoColor=FFF&labelColor=2A2A2A">
+  </a>
+  </br>
+  <a href="https://discord.com/api/oauth2/authorize?client_id=1107722770248384654&permissions=268435456&scope=bot%20applications.commands">
+    <img alt="Add to Discord" src="https://img.shields.io/static/v1?label=&message=add%20to%20discord&style=for-the-badge&color=5865F2">
+  </a>
+</p>
+
 **Timezone Bot** (or **Timezones**) is _an open-source Discord bot which gives your members the ability to pin their timezone to their profile._
 
 **Timezones** can be added to your Discord server [here](https://discord.com/api/oauth2/authorize?client_id=1107722770248384654&permissions=268435456&scope=bot%20applications.commands)
