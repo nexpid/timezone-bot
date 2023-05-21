@@ -6,7 +6,7 @@ import {
   RESTGetAPICurrentUserApplicationRoleConnectionResult,
 } from "discord-api-types/v10";
 import { REST } from "./util/rest";
-import { Env } from ".";
+import { Env, parseURL } from ".";
 import { delTokens, setTokens, TokensType } from "./storage";
 
 const rest = new REST();
@@ -18,9 +18,7 @@ export function getOAuthUrl(env: Env): { state: string; url: string } {
   url.searchParams.set("client_id", env.discord_client_id);
   url.searchParams.set(
     "redirect_uri",
-    `${
-      env.api_url.endsWith("/") ? env.api_url.slice(0, -1) : env.api_url
-    }/discord-oauth-callback`
+    `${parseURL(env.api_url)}/discord-oauth-callback`
   );
   url.searchParams.set("response_type", "code");
   url.searchParams.set("state", state);
@@ -43,9 +41,7 @@ export async function getOAuthToken(
       client_secret: env.discord_client_secret,
       grant_type: "authorization_code",
       code,
-      redirect_uri: `${
-        env.api_url.endsWith("/") ? env.api_url.slice(0, -1) : env.api_url
-      }/discord-oauth-callback`,
+      redirect_uri: `${parseURL(env.api_url)}/discord-oauth-callback`,
     }),
   })) as RESTPostOAuth2AccessTokenResult;
 

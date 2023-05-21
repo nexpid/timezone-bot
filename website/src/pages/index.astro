@@ -1,0 +1,50 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import icon from "~/assets/icon-round.png";
+import config from "~/config";
+import Discord from "~/components/Discord.astro";
+import GitHub from "~/components/GitHub.astro";
+import { Image } from "@astrojs/image/components";
+---
+
+<Layout>
+  <main class="flex h-screen items-center justify-center pb-8 text-center">
+    <div
+      class="flex flex-col items-center px-4 text-center md:flex-row md:text-left"
+    >
+      <Image
+        src={icon.src}
+        alt={config.iconAlt}
+        format="webp"
+        width={512}
+        height={512}
+        class="mb-6 mr-8 h-48 w-48 md:h-64 md:w-64"
+      />
+      <div>
+        <h1 class="mb-4 text-6xl font-extrabold text-white md:text-7xl">
+          Timezone Bot
+        </h1>
+        <p class="max-w-3xl text-lg text-gray-300 md:text-xl">
+          The best <b>open-source</b> Discord bot which gives your members the ability
+          to pin their timezone to their profile.
+        </p>
+        <div class="mt-6 flex flex-col gap-6 md:flex-row">
+          <a
+            href={config.redirects.discord}
+            class="broder-1 flex items-center justify-center gap-x-3 rounded-lg border border-[#5865F2] bg-[#3d405e]/50 px-10 py-3 text-lg font-semibold text-white transition-colors hover:bg-[#3d405e]"
+          >
+            <Discord />
+            Add to Discord</a
+          >
+          <a
+            href={config.redirects.github}
+            class="broder-1 flex items-center justify-center gap-x-3 rounded-lg border border-[#FFA500] bg-[#63512e]/50 px-10 py-3 text-lg font-semibold text-white transition-colors hover:bg-[#63512e]"
+          >
+            <GitHub />
+            GitHub</a
+          >
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

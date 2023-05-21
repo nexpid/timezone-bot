@@ -8,9 +8,10 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "dev": "miniflare --port 7979",
-    "publish": "node scripts/build.mjs & wrangler publish"
+    "publish": "node scripts/build.mjs & wrangler publish & wrangler pages deploy ./../website/dist"
   },
   "dependencies": {
+    "@cloudflare/kv-asset-handler": "^0.3.0",
     "@upstash/redis": "^1.20.6",
     "discord-api-types": "^0.37.42"
   }

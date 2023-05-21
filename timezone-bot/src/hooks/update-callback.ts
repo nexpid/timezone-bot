@@ -20,11 +20,11 @@ export default async (req: Request, env: Env) => {
   const state = query.get("state") as string;
   const timezone = query.get("timezone") as string;
   const countryFlag = (query.get("country") === "true") as boolean;
-  if (!state || !timezone || !countryFlag)
+  if (!state || !timezone || countryFlag === undefined)
     return new Response(
-      "query.state, query.timezone or query.country missing",
+      "query.state, query.timezone or query.country is missing",
       {
-        status: 403,
+        status: 400,
         ...textType,
       }
     );

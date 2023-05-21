@@ -32,8 +32,9 @@ export interface CommandContext {
     token: string;
   };
   user: APIUser;
-  member?: APIInteractionGuildMember;
+  member: APIInteractionGuildMember;
   channel: Partial<APIChannel> & Pick<APIChannel, "id" | "type">;
+  guild: string;
   resolved?: APIInteractionDataResolved;
 
   arguments: APIApplicationCommandInteractionDataOption[];
@@ -44,7 +45,8 @@ export function makeContext(
   data: APIChatInputApplicationCommandInteraction,
   env: Env
 ): CommandContext {
-  if (!data.user && !data.member) throw new Error("user not available");
+  if (!data.user || !data.member) throw new Error("user not available");
+  if (!data.guild_id) throw new Error("guild not available");
 
   return {
     command: {
@@ -55,9 +57,10 @@ export function makeContext(
     webhook: {
       token: data.token,
     },
-    user: (data.member ? data.member.user : data.user) as APIUser,
+    user: data.member.user,
     member: data.member,
     channel: data.channel,
+    guild: data.guild_id,
     resolved: data.data.resolved,
 
     arguments: data.data.options ?? [],

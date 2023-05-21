@@ -1,0 +1,44 @@
+---
+import config from "~/config";
+import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
+import icon from "~/assets/icon-round.png";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timezones</title>
+    <!-- Primary Meta Tags -->
+    <title>{config.name}</title>
+    <meta name="title" content={config.name} />
+    <meta name="description" content={config.name} />
+
+    <link rel="icon" href={icon.src} type="image/png" sizes="64x64" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={config.origin} />
+    <meta property="og:site_name" content={config.name} />
+    <meta property="og:title" content={config.name} />
+    <meta property="og:description" content={config.description} />
+    <meta property="og:image" content={icon.src} />
+    <meta property="og:image:alt" content={config.iconAlt} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={config.origin} />
+    <meta property="twitter:title" content={config.name} />
+    <meta property="twitter:description" content={config.description} />
+    <meta property="twitter:image" content={icon.src} />
+    <meta name="twitter:image:alt" content={config.iconAlt} />
+    <meta name="theme-color" content={config.themeColor} />
+    <GoogleFontsOptimizer
+      url="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,500;1,700;1,900&display=swap"
+    />
+  </head>
+  <body class="bg-dark font-body">
+    <slot />
+  </body>
+</html>

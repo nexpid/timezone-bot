@@ -10,15 +10,24 @@ export default [
     description: "Manage timezones",
     options: [
       {
-        name: "remove",
-        description: "Remove your current timezone",
+        name: "info",
+        description: "Get more information about Timezones",
         type: ApplicationCommandOptionType.Subcommand,
       },
-      {
-        name: "update",
-        description: "Update your timezone",
+      /*{
+        name: "setup",
+        description: "🔨 Setup Timezones for this server",
         type: ApplicationCommandOptionType.Subcommand,
-      },
+        options: [
+          {
+            name: "force",
+            description:
+              "Force Timezones to create a new role even if one exists",
+            type: ApplicationCommandOptionType.Boolean,
+            required: false,
+          },
+        ],
+      },*/
       {
         name: "check",
         description: "Check someone's timezone",
@@ -31,6 +40,16 @@ export default [
             required: false,
           },
         ],
+      },
+      {
+        name: "update",
+        description: "Update your timezone",
+        type: ApplicationCommandOptionType.Subcommand,
+      },
+      {
+        name: "remove",
+        description: "Remove your current timezone",
+        type: ApplicationCommandOptionType.Subcommand,
       },
     ],
   },

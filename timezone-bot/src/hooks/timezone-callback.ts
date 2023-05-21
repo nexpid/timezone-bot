@@ -21,9 +21,9 @@ export default async (req: Request, env: Env) => {
   const dcState = query.get("state") as string;
   const timezone = query.get("timezone") as string;
   const countryFlag = (query.get("country") === "true") as boolean;
-  if (!code || !dcState || !timezone)
+  if (!code || !dcState || !timezone || countryFlag === undefined)
     return new Response(
-      "query.code, query.state or query.timezone is missing",
+      "query.code, query.state, query.timezone or query.country is missing",
       {
         status: 400,
         ...textType,

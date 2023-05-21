@@ -5,7 +5,7 @@ export class REST {
     url: string,
     method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE",
     data?: DataThing
-  ): Promise<unknown> {
+  ): Promise<any> {
     if (!data) data = { headers: {} };
     if (!data.headers) data.headers = {};
     for (const [x, y] of Object.entries(data.headers)) {

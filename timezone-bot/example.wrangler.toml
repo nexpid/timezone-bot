@@ -1,4 +1,4 @@
-name = "timezone-bot"
+name = "timezones"
 main = "src/index.ts"
 compatibility_date = "2023-05-15"
 usage_model = "bundled"
@@ -8,8 +8,12 @@ compatibility_flags = [ "nodejs_compat" ]
 [triggers]
 crons = [ ]
 
+[build]
+command = "npm run build"
+
 [vars]
 api_url = "ApiURLHere"
+pages_url = "PagesURLHere"
 cookie_secret = "CookieSecretHere"
 discord_client_id = "ClientIDHere"
 # discord_token, discord_public_key, discord_client_secret, redis_url & redis_token

@@ -3,13 +3,13 @@ import "./commands/timezone";
 import apiInteraction from "./hooks/api-interaction";
 import discordOauthCallback from "./hooks/discord-oauth-callback";
 import linkedRole from "./hooks/linked-role";
-import notfound from "./hooks/notfound";
 import timezoneCallback from "./hooks/timezone-callback";
 import updateCallback from "./hooks/update-callback";
 import { redisClient, setRedisClient } from "./util/redis";
 
 export interface Env {
   api_url: string;
+  pages_url?: string;
   cookie_secret: string;
   discord_client_id: string;
   discord_token: string;
@@ -32,13 +32,8 @@ export class Redirect extends Response {
   }
 }
 
-const StateThing: Map<string, string> = new Map();
-export function getStateThing(): typeof StateThing {
-  console.log(
-    "requested get StateThing, entries: ",
-    [...StateThing.keys()].length
-  );
-  return StateThing;
+export function parseURL(thing: string | URL) {
+  return new URL(thing).origin;
 }
 
 export default {
@@ -48,6 +43,7 @@ export default {
     const url = new URL(req.url);
     const path = url.pathname;
 
+    // api routes/etc
     if (req.method === "GET") {
       if (path === "/linked-role") return await linkedRole(env);
       else if (path === "/discord-oauth-callback")
@@ -58,7 +54,16 @@ export default {
         return await updateCallback(req, env);
     } else if (req.method === "POST") {
       if (path === "/api/interaction") return await apiInteraction(req, env);
+      else
+        return new Response("nuh uh", {
+          status: 404,
+          headers: { "content-type": "text/plain" },
+        });
     }
-    return notfound(path);
+
+    // website rendering
+    if (env.pages_url) {
+      return await fetch(`${parseURL(env.pages_url)}${path}`);
+    }
   },
 };

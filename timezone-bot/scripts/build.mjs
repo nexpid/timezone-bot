@@ -25,7 +25,7 @@ Promise.all([
     charset: "utf8",
     minify: !dev,
     watch: watch,
-    external: ["node:events", "node:buffer"],
+    external: ["__STATIC_CONTENT_MANIFEST"],
   }),
 ])
   .catch((err) => {
