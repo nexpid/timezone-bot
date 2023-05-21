@@ -5,7 +5,7 @@
 
 # Info
 
-**Timezone Bot**'s code is hosted on the worker (**`https://WORKER_NAME.AUTHOR_NAME.workers.dev`** => **`https://timezones.nexpid.workers.dev`**)
+**Timezone Bot**'s code is hosted on the worker (**`https://WORKER_NAME.AUTHOR_NAME.workers.dev`** => **`https://timezones.nexpid.workers.dev`**)  
 All non-API requests are sent to pages (**`https://WORKER_NAME.pages.dev`** => **`https://timezones.pages.dev`**)
 
 # Requirements
@@ -90,6 +90,6 @@ All non-API requests are sent to pages (**`https://WORKER_NAME.pages.dev`** => *
 
 1. run **`npm run publish`**
 
-- when prompted for pages settings, set name to your **`WORKER_NAME`** and branch to **`main`**
+   - when prompted for pages settings, set name to your **`WORKER_NAME`** and branch to **`main`**
 
-3. you're done ✨
+2. you're done ✨
