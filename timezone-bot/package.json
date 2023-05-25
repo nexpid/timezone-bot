@@ -8,7 +8,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "dev": "miniflare --port 7979",
-    "publish": "wrangler publish & npm run build --prefix ../website & wrangler pages deploy ../website"
+    "publish": "wrangler deploy & npm run build --prefix ../website & wrangler pages deploy ../website"
   },
   "dependencies": {
     "@cloudflare/kv-asset-handler": "^0.3.0",
