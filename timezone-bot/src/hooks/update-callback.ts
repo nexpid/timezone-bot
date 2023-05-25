@@ -37,6 +37,12 @@ export default async (req: Request, env: Env) => {
       status: 400,
       ...textType,
     });
+  const country = timezones.timezoneToCountry(tz);
+  if (!country)
+    return new Response(`country not found for timezone "${timezone}"`, {
+      status: 400,
+      ...textType,
+    });
 
   const stat = await getUpdateState(state);
   if (!stat)
@@ -67,13 +73,12 @@ export default async (req: Request, env: Env) => {
 
   const tzoffset = timezones.getOffset(tz);
   const continent = tz.split("/")[0];
-  const tzct = timezones.tzCtMap[tz]?.toUpperCase();
 
   tokens.settings = {
     offset: tzoffset,
     timezone: tz,
     continent,
-    country: tzct,
+    country,
     showcountry: countryFlag,
   };
   await setTokens(stat.userid, tokens);
@@ -84,7 +89,7 @@ export default async (req: Request, env: Env) => {
       stat.userid,
       tokens,
       `UTC${timezones.prettifyOffset(tzoffset)} (${
-        countryFlag && tzct ? `${tzct}, ${continent}` : continent
+        countryFlag && country ? `${country}, ${continent}` : continent
       })`
     );
   } catch (e) {
