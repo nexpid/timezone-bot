@@ -19,7 +19,7 @@ All non-API requests are sent to pages (**`https://WORKER_NAME.pages.dev`** => *
 
 > ### **💡 Tip**
 >
-> Also install dev dependencies if you want to edit code
+> Also install dev dependencies if you want to edit code  
 > Example: **`npm i -D`** (or **`yarn install --prod`**)
 
 ## 1. Init the repository
