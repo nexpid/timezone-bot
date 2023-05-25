@@ -27,7 +27,7 @@
   <img src="./assets/banner.png" alt="Timezones Banner" width="669" height="200">
 </div>
 
-# Command Documentation
+# 📃 Command Documentation
 
 **`/timezone info`** — shows general information about the bot and how to use it  
 ~~**`/timezone setup`** — creates a preset **Timezones** role to your server~~  
@@ -35,7 +35,7 @@
 **`/timezone update`** — prompts you to update your timezone  
 **`/timezone remove`** — removes your timezone from your profile
 
-# Setting Up
+# 🚧 Setting Up
 
 After adding **Timezones** to your server, simply run the **`/timezone setup`** command to create a preset role with **Timezones** linked!
 Or, if you want to setup **Timezones** manually:
@@ -48,6 +48,6 @@ Or, if you want to setup **Timezones** manually:
 >
 > If you own a big Discord server, make sure to let your members know how **Timezones** works!
 
-# Hosting Timezones Yourself
+# 🖥️ Hosting Timezones Yourself
 
 Hosting **Timezones** yourself isn't the easiest thing to do, but if you're feeling brave you can follow [this tutorial](./SELFHOSTING.md)!
