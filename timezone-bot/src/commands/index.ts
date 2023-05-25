@@ -45,7 +45,8 @@ export function makeContext(
   data: APIChatInputApplicationCommandInteraction,
   env: Env
 ): CommandContext {
-  if (!data.user || !data.member) throw new Error("user not available");
+  const user = data.user ?? data.member?.user;
+  if (!user || !data.member) throw new Error("user not available");
   if (!data.guild_id) throw new Error("guild not available");
 
   return {
@@ -57,7 +58,7 @@ export function makeContext(
     webhook: {
       token: data.token,
     },
-    user: data.member.user,
+    user,
     member: data.member,
     channel: data.channel,
     guild: data.guild_id,
