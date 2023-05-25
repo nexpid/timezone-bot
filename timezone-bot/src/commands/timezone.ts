@@ -39,19 +39,21 @@ new Command({
       true
     );
 
-    async function getLinkedRole(): Promise<APIRole | undefined> {
+    /*async function getLinkedRole(): Promise<APIRole | undefined> {
       const roles: APIRole[] = await rest.get(Routes.guildRoles(ctx.guild), {
         headers: {
           Authorization: `Bot ${ctx.env.discord_token}`,
         },
       });
+      // TODO make fetching linked roles work
       return roles.find((x) =>
         x.name.toLowerCase().replace(/ +/g, "").includes("timezone")
       );
-    }
+    }*/
 
     if (subcommand.name === "info") {
-      const linkedRole = await getLinkedRole();
+      // TODO finish /timezone info
+      /*const linkedRole = await getLinkedRole();
 
       return {
         content: `**Timezones** is _an open-source Discord bot which gives your members the ability to pin their timezone to their profile._\n\n> ${
@@ -64,8 +66,13 @@ new Command({
               }.`
         }`,
         flags: MessageFlags.Ephemeral,
+      };*/
+      return {
+        content: `*hey there, you stumbled upon an unreleased command!*\n*if you need more info about Timezones, [read the GitHub page](https://github.com/Gabe616/timezone-bot#readme)*`,
+        flags: MessageFlags.Ephemeral,
       };
     } else if (subcommand.name === "setup") {
+      // TODO finish /timezone setup
       /*if (!isMod) return {
         content: `🔨 Missing \`**Manage Server**\` permission to run this command`,
         flags: MessageFlags.Ephemeral
@@ -77,7 +84,7 @@ new Command({
           ?.value as boolean) ?? false;
 
       if (linkedRole && !isForce) return {
-        content: `❌ This server already has a role which may be linked to **Timezones**, <@&${linkedRole.id}>`,
+        content: `❌ This server already has a role which is linked to **Timezones**, <@&${linkedRole.id}>`,
         flags: MessageFlags.Ephemeral
       }
 
