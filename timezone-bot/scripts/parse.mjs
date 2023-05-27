@@ -25,6 +25,12 @@ for (let x of res.countries) {
 
   obj[ct] = tzs;
 }
+
+// TODO get moment-timezone to fix this (https://github.com/moment/moment-timezone/issues/1066)
+// hotfix
+obj.CZ = ["Europe/Prague"];
+obj.SK = ["Europe/Bratislava"];
+
 console.log("done");
 fs.writeFileSync(
   path.join(__dirname, "../src/util/timezones.parsed.ts"),
