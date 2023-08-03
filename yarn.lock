@@ -35,18 +35,18 @@
   integrity sha512-y9Ys8j22LMHaMdy31OyaV7Qz1Xca8MhzpBlpX4Ay6saECXYP1DZHHwtcW8pBqBU2zyGfEkErBQhyH130SSHFJg==
 
 "@cloudflare/workers-types@^4.20230511.0":
-  version "4.20230511.0"
-  resolved "https://registry.npmjs.org/@cloudflare/workers-types/-/workers-types-4.20230511.0.tgz"
-  integrity sha512-Br4i/8+t60HDJIo8o7O9Rrmp03bhdejRW9klb0bK9EfG5Ii7qz5G3PJO12gUz+Vu9m1v9tZ9KOh3Gg8oshXtug==
+  version "4.20230801.0"
+  resolved "https://registry.yarnpkg.com/@cloudflare/workers-types/-/workers-types-4.20230801.0.tgz#d23ec9671a08d91ad027fb4c783e94dee275d279"
+  integrity sha512-RzRUR+J/T3h58qbTZHYntYsnZXu3JnrlZIhqP2hhdyfoZAZ/+ko4wX0foAqlYHi+kXWaWtySHBuMcx6ec6TXlQ==
 
 "@esbuild-plugins/node-globals-polyfill@^0.1.1":
   version "0.1.1"
-  resolved "https://registry.npmjs.org/@esbuild-plugins/node-globals-polyfill/-/node-globals-polyfill-0.1.1.tgz"
+  resolved "https://registry.yarnpkg.com/@esbuild-plugins/node-globals-polyfill/-/node-globals-polyfill-0.1.1.tgz#a313ab3efbb2c17c8ce376aa216c627c9b40f9d7"
   integrity sha512-MR0oAA+mlnJWrt1RQVQ+4VYuRJW/P2YmRTv1AsplObyvuBMnPHiizUF95HHYiSsMGLhyGtWufaq2XQg6+iurBg==
 
 "@esbuild-plugins/node-modules-polyfill@^0.1.4":
   version "0.1.4"
-  resolved "https://registry.npmjs.org/@esbuild-plugins/node-modules-polyfill/-/node-modules-polyfill-0.1.4.tgz"
+  resolved "https://registry.yarnpkg.com/@esbuild-plugins/node-modules-polyfill/-/node-modules-polyfill-0.1.4.tgz#eb2f55da11967b2986c913f1a7957d1c868849c0"
   integrity sha512-uZbcXi0zbmKC/050p3gJnne5Qdzw8vkXIv+c2BW0Lsc1ji1SkrxbKPUy5Efr0blbTu1SL8w4eyfpnSdPg3G0Qg==
   dependencies:
     escape-string-regexp "^4.0.0"
