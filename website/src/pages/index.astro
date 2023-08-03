@@ -18,14 +18,24 @@ const text = {
     <div
       class="flex flex-col items-center px-4 text-center md:flex-row md:text-left"
     >
-      <Image
-        src={icon.src}
-        alt={config.iconAlt}
-        format="svg"
-        width={512}
-        height={512}
-        class="mb-6 mr-8 h-48 w-48 md:h-64 md:w-64"
-      />
+      <div class="relative">
+        <Image
+          src={icon.src}
+          alt={config.iconAlt}
+          format="svg"
+          width={512}
+          height={512}
+          class="mb-6 mr-8 h-48 w-48 md:h-64 md:w-64 blur-xl opacity-50"
+        />
+        <Image
+          src={icon.src}
+          alt={config.iconAlt}
+          format="svg"
+          width={512}
+          height={512}
+          class="mb-6 mr-8 h-48 w-48 md:h-64 md:w-64 absolute top-0"
+        />
+      </div>
       <div>
         <div class="relative">
           <h1
