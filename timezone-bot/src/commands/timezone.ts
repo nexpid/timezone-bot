@@ -48,6 +48,13 @@ new Command({
         flags: MessageFlags.Ephemeral,
       };
     } else if (subcommand.name === "setup") {
+      if (!isMod)
+        return {
+          content:
+            "❌ You must have the **Manage Server** permission to run this command!",
+          flags: MessageFlags.Ephemeral,
+        };
+
       return {
         content: [
           "**Timezones** can be setup in 3 easy steps:",
