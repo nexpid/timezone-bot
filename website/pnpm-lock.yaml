@@ -9,8 +9,8 @@ dependencies:
     specifier: ^0.17.0
     version: 0.17.0(astro@2.2.1)
   '@astrojs/prefetch':
-    specifier: ^0.2.1
-    version: 0.2.1
+    specifier: ^0.3.0
+    version: 0.3.0
   '@astrojs/sitemap':
     specifier: ^2.0.0
     version: 2.0.0
@@ -145,8 +145,8 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/prefetch@0.2.1:
-    resolution: {integrity: sha512-kVDhUl0BzN/3D1NJL5ndgKK5Dk/mdSf5LinKrPIVVVND+hrdErkihV53sA3pyffdw488pFvAiFu2+LW/DWhiHA==}
+  /@astrojs/prefetch@0.3.0:
+    resolution: {integrity: sha512-LPKpbcnTwonkgNeLvVEQ1SXEyjkjsCm/o77Leg6/9725Cpn+rAIHiWMwFwigqf366VuvdvEYsG86nH8d1kSoNA==}
     dependencies:
       throttles: 1.0.1
     dev: false
