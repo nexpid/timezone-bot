@@ -19,6 +19,7 @@ export const CmdCooldowns: { [key: string]: { [key: string]: number } } = {};
 export interface CommandOptions {
   name: string;
   run: (
+    env: Env,
     ctx: CommandContext
   ) => Promise<ParsableResponse | undefined> | (ParsableResponse | undefined);
 }
@@ -96,8 +97,7 @@ export function parseResponse(message?: ParsableResponse): APIResponseThingy {
       data.data.content = message;
     }
   } else {
-    data.data.content =
-      "https://cdn.discordapp.com/attachments/983040961087164478/1108773615085813801/16844226281029786.mp4";
+    data.data.content = "❌ No response";
     data.data.flags = MessageFlags.Ephemeral;
   }
 
@@ -109,6 +109,7 @@ export type MessageData = APIInteractionResponseCallbackData;
 export class Command {
   name: string;
   run: (
+    env: Env,
     ctx: CommandContext
   ) => Promise<ParsableResponse | undefined> | (ParsableResponse | undefined);
 

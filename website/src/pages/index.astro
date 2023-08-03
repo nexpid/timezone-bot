@@ -1,10 +1,16 @@
 ---
 import Layout from "~/layouts/Layout.astro";
-import icon from "~/assets/icon-round.png";
+import icon from "~/assets/icon_half_rounded.svg";
 import config from "~/config";
-import Discord from "~/components/Discord.astro";
-import GitHub from "~/components/GitHub.astro";
+import Discord from "~/assets/Discord.astro";
+import GitHub from "~/assets/GitHub.astro";
 import { Image } from "@astrojs/image/components";
+
+const text = {
+  title: "Timezone Bot",
+  description:
+    "The best <b>open-source</b> Discord bot which gives your members the ability to pin their timezone to their profile. ",
+};
 ---
 
 <Layout>
@@ -15,30 +21,47 @@ import { Image } from "@astrojs/image/components";
       <Image
         src={icon.src}
         alt={config.iconAlt}
-        format="webp"
+        format="svg"
         width={512}
         height={512}
         class="mb-6 mr-8 h-48 w-48 md:h-64 md:w-64"
       />
       <div>
-        <h1 class="mb-4 text-6xl font-extrabold text-white md:text-7xl">
-          Timezone Bot
-        </h1>
-        <p class="max-w-3xl text-lg text-gray-300 md:text-xl">
-          The best <b>open-source</b> Discord bot which gives your members the ability
-          to pin their timezone to their profile.
-        </p>
+        <div class="relative">
+          <h1
+            class="mb-4 text-6xl font-extrabold text-white md:text-7xl blur-xl opacity-30"
+          >
+            {text.title}
+          </h1>
+          <h1
+            class="mb-4 text-6xl font-extrabold text-white md:text-7xl absolute top-0"
+          >
+            {text.title}
+          </h1>
+        </div>
+        <div class="relative">
+          <p
+            class="max-w-3xl text-lg text-gray-300 md:text-xl blur-xl opacity-30"
+            set:html={text.description}
+          />
+          <p
+            class="max-w-3xl text-lg text-gray-300 md:text-xl absolute top-0"
+            set:html={text.description}
+          />
+        </div>
         <div class="mt-6 flex flex-col gap-6 md:flex-row">
           <a
             href={config.redirects.discord}
-            class="broder-1 flex items-center justify-center gap-x-3 rounded-lg border border-[#5865F2] bg-[#3d405e]/50 px-10 py-3 text-lg font-semibold text-white transition-colors hover:bg-[#3d405e]"
+            class="broder-1 flex items-center justify-center gap-x-3 rounded-lg border border-[#5865F2] bg-[#5865F2]/25 px-10 py-3 text-lg font-semibold text-white transition-colors duration-400 ease-out hover:bg-[#5865F2]/40 shadow-2xl shadow-[#5865F2]/25 hover:shadow-[#5865F2]/30"
+            target="_blank"
           >
             <Discord />
             Add to Discord</a
           >
           <a
             href={config.redirects.github}
-            class="broder-1 flex items-center justify-center gap-x-3 rounded-lg border border-[#FFA500] bg-[#63512e]/50 px-10 py-3 text-lg font-semibold text-white transition-colors hover:bg-[#63512e]"
+            class="broder-1 flex items-center justify-center gap-x-3 rounded-lg border border-[#FFA500] bg-[#FFA500]/25 px-10 py-3 text-lg font-semibold text-white transition-colors duration-400 ease-out hover:bg-[#FFA500]/40 shadow-2xl shadow-[#FFA500]/25 hover:shadow-[#FFA500]/30"
+            target="_blank"
           >
             <GitHub />
             GitHub</a

@@ -3,6 +3,10 @@
     <h1>Timezone Bot — Selfhosting</h1>
 </div>
 
+> ### **🛑 Warning**
+>
+> This guide is outdated and discontinued!
+
 # Info
 
 **Timezone Bot**'s code is hosted on the worker (**`https://WORKER_NAME.AUTHOR_NAME.workers.dev`** => **`https://timezones.nexpid.workers.dev`**)  

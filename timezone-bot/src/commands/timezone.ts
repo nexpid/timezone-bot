@@ -2,7 +2,6 @@ import {
   ApplicationCommandOptionType,
   MessageFlags,
   APIApplicationCommandInteractionDataSubcommandOption,
-  Routes,
   APIRole,
   PermissionFlagsBits,
 } from "discord-api-types/v10";
@@ -10,15 +9,12 @@ import { Command, CommandContext, getCooldown, setCooldown } from ".";
 import { getTokens, setUpdateState } from "../storage";
 import { prettifyOffset } from "../util/timezones";
 import { revokeAccessToken, setMetadata } from "../oauth2";
-import { REST } from "../util/rest";
 import { PermissionsBitField } from "../util/bitfield";
-import { parseURL } from "..";
+import { Env, parseURL } from "..";
 
 new Command({
   name: "timezone",
-  run: async (ctx: CommandContext) => {
-    const rest = new REST();
-
+  run: async (env: Env, ctx: CommandContext) => {
     const subcommand = ctx.arguments.find(
       (x) => x.type === ApplicationCommandOptionType.Subcommand
     ) as APIApplicationCommandInteractionDataSubcommandOption;
@@ -39,59 +35,26 @@ new Command({
       true
     );
 
-    /*async function getLinkedRole(): Promise<APIRole | undefined> {
-      const roles: APIRole[] = await rest.get(Routes.guildRoles(ctx.guild), {
-        headers: {
-          Authorization: `Bot ${ctx.env.discord_token}`,
-        },
-      });
-      // TODO make fetching linked roles work
-      return roles.find((x) =>
-        x.name.toLowerCase().replace(/ +/g, "").includes("timezone")
-      );
-    }*/
+    // TODO make this work perhaps
+    const getLinkedRole = async (): Promise<APIRole | undefined> => undefined;
 
     if (subcommand.name === "info") {
-      // TODO finish /timezone info
-      /*const linkedRole = await getLinkedRole();
-
       return {
-        content: `**Timezones** is _an open-source Discord bot which gives your members the ability to pin their timezone to their profile._\n\n> ${
-          linkedRole
-            ? `💡 To link your timezone, head over to **Linked Roles** and select **${linkedRole.name}**!`
-            : `❌ This server doesn't have **Timezones** set up! ${
-                isMod
-                  ? "Run </timezone setup:0> to setup **Timezones**"
-                  : "Contact a moderator to get this fixed"
-              }.`
-        }`,
-        flags: MessageFlags.Ephemeral,
-      };*/
-      return {
-        content: `*hey there, you stumbled upon an unreleased command!*\n*if you need more info about Timezones, [read the GitHub page](https://github.com/Gabe616/timezone-bot#readme)*`,
+        content: [
+          "**Timezones** is _an open-source Discord bot which gives your members the ability to pin their timezone to their profile._\n",
+          "💡 Don't know what to do? If this server has **Timezones** set up, click on the server name and select **Linked Roles** from the dropdown. If **Timezones** doesn't appear, contact a server moderator to run </timezone setup:0>!\n",
+          '🔗 **[GitHub](https://github.com/Gabe616/timezone-bot "Timezones GitHub")**',
+        ].join("\n"),
         flags: MessageFlags.Ephemeral,
       };
     } else if (subcommand.name === "setup") {
-      // TODO finish /timezone setup
-      /*if (!isMod) return {
-        content: `🔨 Missing \`**Manage Server**\` permission to run this command`,
-        flags: MessageFlags.Ephemeral
-      }
-
-      const linkedRole = await getLinkedRole();
-      const isForce =
-        (subcommand.options?.find((x) => x.name === "force")
-          ?.value as boolean) ?? false;
-
-      if (linkedRole && !isForce) return {
-        content: `❌ This server already has a role which is linked to **Timezones**, <@&${linkedRole.id}>`,
-        flags: MessageFlags.Ephemeral
-      }
-
-      const newRole = */
-
       return {
-        content: `*hey there, you stumbled upon an unreleased command!*\n*if you need more info about Timezones, [read the GitHub page](https://github.com/Gabe616/timezone-bot#readme)*`,
+        content: [
+          "**Timezones** can be setup in 3 easy steps:",
+          "1. Create a new role and call it whatever you want (it's recommended to include the word **`Timezone`** in some way)",
+          "2. Go to the Links tab > Add requirement > select **Timezones**",
+          "3. You're all done! Now head to your server's Linked Roles and you'll see timezones available",
+        ].join("\n"),
         flags: MessageFlags.Ephemeral,
       };
     } else if (subcommand.name === "check") {
@@ -109,7 +72,7 @@ new Command({
         };
 
       const display = member.nick ?? user.username;
-      const tokens = await getTokens(userId);
+      const tokens = await getTokens(env, userId);
       if (!tokens || !tokens.settings)
         return {
           content: `❌ ${
@@ -129,7 +92,7 @@ new Command({
         flags: MessageFlags.Ephemeral,
       };
     } else if (subcommand.name === "update") {
-      const tokens = await getTokens(ctx.user.id);
+      const tokens = await getTokens(env, ctx.user.id);
       if (!tokens)
         return {
           content: `❌ You don't have a timezone set!`,
@@ -143,7 +106,7 @@ new Command({
       url.searchParams.set("state", state);
       url.searchParams.set("update", "true");
 
-      await setUpdateState(state, {
+      await setUpdateState(env, state, {
         userid: ctx.user.id,
         actions: [
           {
@@ -165,7 +128,7 @@ new Command({
         flags: MessageFlags.Ephemeral,
       };
     } else if (subcommand.name === "remove") {
-      const tokens = await getTokens(ctx.user.id);
+      const tokens = await getTokens(env, ctx.user.id);
       if (!tokens)
         return {
           content: "❌ You don't have a timezone set!",

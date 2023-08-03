@@ -5,9 +5,9 @@ import discordOauthCallback from "./hooks/discord-oauth-callback";
 import linkedRole from "./hooks/linked-role";
 import timezoneCallback from "./hooks/timezone-callback";
 import updateCallback from "./hooks/update-callback";
-import { redisClient, setRedisClient } from "./util/redis";
 
 export interface Env {
+  DB: D1Database;
   api_url: string;
   pages_url?: string;
   cookie_secret: string;
@@ -15,8 +15,6 @@ export interface Env {
   discord_token: string;
   discord_public_key: string;
   discord_client_secret: string;
-  redis_url: string;
-  redis_token: string;
 }
 
 export class Redirect extends Response {
@@ -38,8 +36,6 @@ export function parseURL(thing: string | URL) {
 
 export default {
   fetch: async (req: Request, env: Env) => {
-    if (!redisClient) setRedisClient(env.redis_url, env.redis_token);
-
     const url = new URL(req.url);
     const path = url.pathname;
 

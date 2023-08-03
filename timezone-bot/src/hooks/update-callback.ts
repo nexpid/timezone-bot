@@ -44,15 +44,15 @@ export default async (req: Request, env: Env) => {
       ...textType,
     });
 
-  const stat = await getUpdateState(state);
+  const stat = await getUpdateState(env, state);
   if (!stat)
     return new Response("state validation failed", {
       status: 403,
       ...textType,
     });
 
-  for (let x of stat.actions) {
-    if (x.type === "editinteraction") {
+  for (let x of stat.actions)
+    if (x.type === "editinteraction")
       await rest.patch(
         Routes.webhookMessage(env.discord_client_id, x.data.token),
         {
@@ -63,11 +63,9 @@ export default async (req: Request, env: Env) => {
           body: x.data.message,
         }
       );
-    }
-  }
-  await delUpdateState(state);
+  await delUpdateState(env, state);
 
-  const tokens = await getTokens(stat.userid);
+  const tokens = await getTokens(env, stat.userid);
   if (!tokens)
     return new Response("no saved tokens found", { status: 400, ...textType });
 
@@ -81,7 +79,7 @@ export default async (req: Request, env: Env) => {
     country,
     showcountry: countryFlag,
   };
-  await setTokens(stat.userid, tokens);
+  await setTokens(env, stat.userid, tokens);
 
   try {
     await setMetadata(

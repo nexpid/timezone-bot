@@ -3,7 +3,7 @@ export default {
   description:
     "Timezones is an open-source Discord bot which gives your members the ability to pin their timezone to their profile",
   themeColor: "#5865F2",
-  origin: "https://timezones.nexpid.workers.dev",
+  origin: "https://timezones.nexpid.xyz",
   iconAlt: "Timezone Bot Icon",
   redirects: {
     discord:

@@ -49,6 +49,7 @@ export async function getOAuthToken(
     access_token: data.access_token as string,
     refresh_token: data.refresh_token as string,
     expires_at: (Date.now() + data.expires_in * 1000) as number,
+    settings: null,
   };
 }
 
@@ -72,7 +73,7 @@ export async function getAccessToken(
 
     tokens.access_token = body.access_token;
     tokens.expires_at = Date.now() + body.expires_in * 1000;
-    await setTokens(userId, tokens);
+    await setTokens(env, userId, tokens);
     return body.access_token;
   } else return tokens.access_token;
 }
@@ -93,7 +94,7 @@ export async function revokeAccessToken(
     }),
   });
 
-  await delTokens(userId);
+  await delTokens(env, userId);
 }
 
 export async function getUserData(

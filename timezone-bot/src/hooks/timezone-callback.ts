@@ -17,13 +17,18 @@ export default async (req: Request, env: Env) => {
   const query = new URLSearchParams(url.search);
   const cookies = parseCookies(req.headers.get("cookie"));
 
+  const cfTimezone = req.cf?.timezone as string;
+  const qTimezone = query.get("timezone");
+
   const code = query.get("code") as string;
   const dcState = query.get("state") as string;
-  const timezone = query.get("timezone") as string;
+  const timezone = cfTimezone ?? qTimezone;
   const countryFlag = (query.get("country") === "true") as boolean;
   if (!code || !dcState || !timezone || countryFlag === undefined)
     return new Response(
-      "query.code, query.state, query.timezone or query.country is missing",
+      `query.code, query.state${
+        !cfTimezone ? ", query.timezone" : ""
+      } or query.country is missing`,
       {
         status: 400,
         ...textType,
@@ -80,7 +85,7 @@ export default async (req: Request, env: Env) => {
     country,
     showcountry: countryFlag,
   };
-  await storage.setTokens(userId, tokens);
+  await storage.setTokens(env, userId, tokens);
 
   try {
     await setMetadata(

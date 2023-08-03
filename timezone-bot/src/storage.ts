@@ -1,40 +1,69 @@
 import { Snowflake } from "discord-api-types/v10";
-import { redisClient } from "./util/redis";
 import { MessageData } from "./commands";
+import { Env } from ".";
 
 export interface TokensType {
   access_token: string;
   refresh_token: string;
   expires_at: number;
-  settings?: {
+  settings: {
     offset: number;
     timezone: string;
     continent: string;
     country?: string;
     showcountry: boolean;
-  };
+  } | null;
 }
 
-export async function getTokens(userId: Snowflake): Promise<TokensType | null> {
-  if (!redisClient)
-    throw new Error("tried to getTokens while redis is unavailable");
+interface D1TokensType {
+  userid: string;
+  access_token: string;
+  refresh_token: string;
+  expires_at: number;
+  settings: string | null;
+}
 
-  return await redisClient.get<TokensType>(`dc-oauth:${userId}`);
+export async function getTokens(
+  env: Env,
+  userId: Snowflake
+): Promise<TokensType | null> {
+  const cmd = (await env.DB.prepare(`select * from oauth where userid=?1`)
+    .bind(userId)
+    .first()) as D1TokensType;
+  if (!cmd) return null;
+
+  return (
+    cmd && {
+      access_token: cmd.access_token,
+      refresh_token: cmd.refresh_token,
+      expires_at: cmd.expires_at,
+      settings: cmd.settings && JSON.parse(cmd.settings),
+    }
+  );
 }
 export async function setTokens(
+  env: Env,
   userId: Snowflake,
   tokens: TokensType
-): Promise<string | null> {
-  if (!redisClient)
-    throw new Error("tried to setTokens while redis is unavailable");
-
-  return await redisClient.set(`dc-oauth:${userId}`, JSON.stringify(tokens));
+): Promise<boolean> {
+  return (
+    await env.DB.prepare(
+      `insert or replace into oauth (userid, access_token, refresh_token, expires_at, settings) values (?1, ?2, ?3, ?4, ?5)`
+    )
+      .bind(
+        userId,
+        tokens.access_token,
+        tokens.refresh_token,
+        tokens.expires_at,
+        JSON.stringify(tokens.settings)
+      )
+      .run()
+  ).success;
 }
-export async function delTokens(userId: Snowflake): Promise<number> {
-  if (!redisClient)
-    throw new Error("tried to delTokens while redis is unavailable");
-
-  return await redisClient.del(`dc-oauth:${userId}`);
+export async function delTokens(env: Env, userId: Snowflake): Promise<boolean> {
+  return (
+    await env.DB.prepare(`delete from oauth where userid=?1`).bind(userId).run()
+  ).success;
 }
 
 export type UpdateStateAction =
@@ -54,28 +83,46 @@ export type UpdateStates = {
   actions: UpdateStateAction[];
 };
 
+interface D1UpdateStates {
+  state: string;
+  userid: string;
+  actions: string;
+}
+
 export async function getUpdateState(
+  env: Env,
   state: string
 ): Promise<UpdateStates | null> {
-  if (!redisClient)
-    throw new Error("tried to getUpdateState while redis is unavailable");
+  const cmd = (await env.DB.prepare(`select * from ustate where state=?1`)
+    .bind(state)
+    .first()) as D1UpdateStates;
+  if (!cmd) return null;
 
-  return await redisClient.get<UpdateStates>(`ustate:${state}`);
+  return (
+    cmd && {
+      userid: cmd.userid,
+      actions: JSON.parse(cmd.actions),
+    }
+  );
 }
 export async function setUpdateState(
+  env: Env,
   state: string,
   data: UpdateStates
-): Promise<string | null> {
-  if (!redisClient)
-    throw new Error("tried to setUpdateState while redis is unavailable");
-
-  return await redisClient.set(`ustate:${state}`, JSON.stringify(data), {
-    pxat: Date.now() + 3 * 60_000,
-  });
+): Promise<boolean> {
+  return (
+    await env.DB.prepare(
+      `insert or replace into ustate (state, userid, actions) values (?1, ?2, ?3)`
+    )
+      .bind(state, data.userid, JSON.stringify(data.actions))
+      .run()
+  ).success;
 }
-export async function delUpdateState(state: string): Promise<number> {
-  if (!redisClient)
-    throw new Error("tried to delUpdateState while redis is unavailable");
-
-  return await redisClient.del(`ustate:${state}`);
+export async function delUpdateState(
+  env: Env,
+  state: string
+): Promise<boolean> {
+  return (
+    await env.DB.prepare(`delete from ustate where state=?1`).bind(state).run()
+  ).success;
 }

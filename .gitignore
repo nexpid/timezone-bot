@@ -50,8 +50,6 @@ build/Release
 
 # Dependency directories
 
-yarn.lock
-package-lock.json
 node_modules/
 jspm_packages/
 
@@ -173,3 +171,7 @@ dist
 
 .dev.vars
 .wrangler/
+
+# Personal
+
+secret_scripts

@@ -1,7 +1,8 @@
 ---
 import config from "~/config";
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
-import icon from "~/assets/icon-round.png";
+import icon from "~/assets/rendered/icon_half_rounded.png";
+import favicon from "~/assets/clock.svg";
 ---
 
 <html lang="en">
@@ -9,13 +10,14 @@ import icon from "~/assets/icon-round.png";
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="darkreader-lock" />
     <title>Timezones</title>
     <!-- Primary Meta Tags -->
     <title>{config.name}</title>
     <meta name="title" content={config.name} />
     <meta name="description" content={config.name} />
 
-    <link rel="icon" href={icon.src} type="image/png" sizes="64x64" />
+    <link rel="icon" href={favicon.src} type="image/svg+xml" sizes="64x64" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />

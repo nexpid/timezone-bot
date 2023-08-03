@@ -53,7 +53,7 @@ export default async (req: Request, env: Env) => {
     if (!command) return new Response("command not found", { status: 404 });
 
     try {
-      return rep(parseResponse(await command.run(ctx)));
+      return rep(parseResponse(await command.run(env, ctx)));
     } catch (e: any) {
       console.error(e.stack);
       return rep({

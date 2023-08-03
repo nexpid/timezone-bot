@@ -1,6 +1,6 @@
 import fs from "fs";
 import fetch from "node-fetch";
-import path from "path";
+import { join } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
@@ -26,14 +26,13 @@ for (let x of res.countries) {
   obj[ct] = tzs;
 }
 
-// TODO get moment-timezone to fix this (https://github.com/moment/moment-timezone/issues/1066)
 // hotfix
 obj.CZ = ["Europe/Prague"];
 obj.SK = ["Europe/Bratislava"];
 
 console.log("done");
 fs.writeFileSync(
-  path.join(__dirname, "../src/util/timezones.parsed.ts"),
+  join(__dirname, "../src/util/timezones.parsed.ts"),
   `// from https://github.com/moment/moment-timezone/blob/develop/data/packed/latest.json\n// last fetched at ${new Date().toISOString()}, version '${
     res.version
   }'\n\nexport const countryTimezoneMap = {${Object.entries(obj).map(

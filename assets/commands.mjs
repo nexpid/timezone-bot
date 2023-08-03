@@ -14,20 +14,11 @@ export default [
         description: "Get more information about Timezones",
         type: ApplicationCommandOptionType.Subcommand,
       },
-      /*{
+      {
         name: "setup",
-        description: "🔨 Setup Timezones for this server",
+        description: "🔨 View setup information about Timezones",
         type: ApplicationCommandOptionType.Subcommand,
-        options: [
-          {
-            name: "force",
-            description:
-              "Force Timezones to create a new role even if one exists",
-            type: ApplicationCommandOptionType.Boolean,
-            required: false,
-          },
-        ],
-      },*/
+      },
       {
         name: "check",
         description: "Check someone's timezone",
