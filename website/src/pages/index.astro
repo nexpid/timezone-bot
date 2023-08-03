@@ -18,14 +18,14 @@ const text = {
     <div
       class="flex flex-col items-center px-4 text-center md:flex-row md:text-left"
     >
-      <div class="relative">
+      <div class="relative mb-6 mr-8 h-48 w-48 md:w-64 md:h-64">
         <Image
           src={icon.src}
           alt={config.iconAlt}
           format="svg"
           width={512}
           height={512}
-          class="mb-6 mr-8 h-48 w-48 md:h-64 md:w-64 blur-xl opacity-50"
+          class="blur-xl opacity-50"
         />
         <Image
           src={icon.src}
@@ -33,31 +33,23 @@ const text = {
           format="svg"
           width={512}
           height={512}
-          class="mb-6 mr-8 h-48 w-48 md:h-64 md:w-64 absolute top-0"
+          class="absolute top-0"
         />
       </div>
       <div>
-        <div class="relative">
-          <h1
-            class="mb-4 text-6xl font-extrabold text-white md:text-7xl blur-xl opacity-30"
-          >
+        <div
+          class="relative mb-4 text-6xl font-extrabold text-white md:text-7xl"
+        >
+          <h1 class="blur-xl opacity-30">
             {text.title}
           </h1>
-          <h1
-            class="mb-4 text-6xl font-extrabold text-white md:text-7xl absolute top-0"
-          >
+          <h1 class="absolute top-0">
             {text.title}
           </h1>
         </div>
-        <div class="relative">
-          <p
-            class="max-w-3xl text-lg text-gray-300 md:text-xl blur-xl opacity-30"
-            set:html={text.description}
-          />
-          <p
-            class="max-w-3xl text-lg text-gray-300 md:text-xl absolute top-0"
-            set:html={text.description}
-          />
+        <div class="relative max-w-3xl text-lg text-gray-300 md:text-xl">
+          <p class="blur-xl opacity-30" set:html={text.description} />
+          <p class="absolute top-0" set:html={text.description} />
         </div>
         <div class="mt-6 flex flex-col gap-6 md:flex-row">
           <a
