@@ -333,9 +333,9 @@ detect-libc@^2.0.0:
   integrity sha512-UX6sGumvvqSaXgdKGUsgZWqcUyIXZ/vZTrlRT/iobiKhGL0zL4d3osHj3uqllWJK+i+sixDS/3COVEOFbupFyw==
 
 discord-api-types@^0.37.42:
-  version "0.37.52"
-  resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.52.tgz#0d47a4409f1e17252dc895f2615dea3d161f7b5f"
-  integrity sha512-TP99aMgY6rHuDIy056GDm1j2nGOcaLbFpjVbvAmv6N6vhkjHNqHXCHVqKtGisaQ8D15slbxTHNl/SSkPdx2syg==
+  version "0.37.54"
+  resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.54.tgz#874a597c88ea8eb47ed25c7039a130bf67635ffd"
+  integrity sha512-xNO6yzEMfpVSVUa6lOOzgLDy3Gyd8yuBAozGQdjpW9VjRq2Ccboz4FhTrd5v4Hw7pbkCKwnHvddjIYrX0INkUQ==
 
 dotenv@^16.3.1:
   version "16.3.1"
