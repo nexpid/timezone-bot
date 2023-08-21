@@ -28,7 +28,7 @@ All non-API requests are sent to pages (**`https://WORKER_NAME.pages.dev`** => *
 
 ## 1. Init the repository
 
-1. run **`git clone https://github.com/Gabe616/timezone-bot.git`**
+1. run **`git clone https://github.com/nexpid/timezone-bot.git`**
 2. run **`cd timezone-bot`**
 3. run **`npm i`** (or **`yarn install`**)
 4. run **`wrangler login`**

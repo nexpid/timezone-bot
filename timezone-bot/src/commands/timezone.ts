@@ -43,7 +43,7 @@ new Command({
         content: [
           "**Timezones** is _an open-source Discord bot which gives your members the ability to pin their timezone to their profile._\n",
           "💡 Don't know what to do? If this server has **Timezones** set up, click on the server name and select **Linked Roles** from the dropdown. If **Timezones** doesn't appear, contact a server moderator to run </timezone setup:0>!\n",
-          '🔗 **[GitHub](https://github.com/Gabe616/timezone-bot "Timezones GitHub")**',
+          '🔗 **[GitHub](https://github.com/nexpid/timezone-bot "Timezones GitHub")**',
         ].join("\n"),
         flags: MessageFlags.Ephemeral,
       };

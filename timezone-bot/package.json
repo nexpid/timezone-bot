@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Timezone bot",
   "main": "dist/worker.mjs",
-  "author": "Gabe616 (https://github.com/Gabe616)",
+  "author": "nexpid (https://github.com/nexpid)",
   "license": "Apache-2.0",
   "scripts": {
     "build": "node scripts/build.mjs",

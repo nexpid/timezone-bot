@@ -4,14 +4,14 @@
 </div>
 
 <p align="center">
-  <a href="https://github.com/Gabe616/timezone-bot/stargazers">
-    <img alt="Stargazers" src="https://img.shields.io/github/stars/Gabe616/timezone-bot?style=for-the-badge&logo=starship&color=5865F2&logoColor=FFF&labelColor=1e1e2e">
+  <a href="https://github.com/nexpid/timezone-bot/stargazers">
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/nexpid/timezone-bot?style=for-the-badge&logo=starship&color=5865F2&logoColor=FFF&labelColor=1e1e2e">
   </a>
-  <a href="https://github.com/Gabe616/timezone-bot/issues">
-    <img alt="Issues" src="https://img.shields.io/github/issues/Gabe616/timezone-bot?style=for-the-badge&logo=gitbook&color=5865F2&logoColor=FFF&labelColor=1e1e2e">
+  <a href="https://github.com/nexpid/timezone-bot/issues">
+    <img alt="Issues" src="https://img.shields.io/github/issues/nexpid/timezone-bot?style=for-the-badge&logo=gitbook&color=5865F2&logoColor=FFF&labelColor=1e1e2e">
   </a>
-  <a href="https://github.com/Gabe616/timezone-bot/pull-requests">
-    <img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/Gabe616/timezone-bot?style=for-the-badge&logo=saucelabs&color=5865F2&logoColor=FFF&labelColor=1e1e2e">
+  <a href="https://github.com/nexpid/timezone-bot/pull-requests">
+    <img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/nexpid/timezone-bot?style=for-the-badge&logo=saucelabs&color=5865F2&logoColor=FFF&labelColor=1e1e2e">
   </a>
   </br>
   <a href="https://discord.com/api/oauth2/authorize?client_id=1107722770248384654&permissions=268435456&scope=bot%20applications.commands">
