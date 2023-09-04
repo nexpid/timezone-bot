@@ -15,8 +15,8 @@ dependencies:
     specifier: ^3.0.0
     version: 3.0.0
   '@astrojs/tailwind':
-    specifier: ^4.0.0
-    version: 4.0.0(astro@2.2.1)(tailwindcss@3.3.1)
+    specifier: ^5.0.0
+    version: 5.0.0(astro@2.2.1)(tailwindcss@3.3.1)
   '@tailwindcss/typography':
     specifier: ^0.5.9
     version: 0.5.9(tailwindcss@3.3.1)
@@ -166,16 +166,16 @@ packages:
       zod: 3.21.1
     dev: false
 
-  /@astrojs/tailwind@4.0.0(astro@2.2.1)(tailwindcss@3.3.1):
-    resolution: {integrity: sha512-HmCAXFFes7MUBt5ihdfH1goa8QyGkHejIpz6Z4XBKK9VNYY9G2E3brCn8+pNn5zAOzcwl3FYcuH2AiOa/NGoMQ==}
+  /@astrojs/tailwind@5.0.0(astro@2.2.1)(tailwindcss@3.3.1):
+    resolution: {integrity: sha512-bMZZNNm/SW+ijUKMQDhdiuNWDdR3CubEKUHb2Ran4Arx1ikWn/kKIkFDXUV+MUnsLa7s19x9VMRlARRyKbqMkQ==}
     peerDependencies:
-      astro: ^2.6.5
+      astro: ^3.0.0
       tailwindcss: ^3.0.24
     dependencies:
       astro: 2.2.1(@types/node@20.2.1)
-      autoprefixer: 10.4.14(postcss@8.4.27)
-      postcss: 8.4.27
-      postcss-load-config: 4.0.1(postcss@8.4.27)
+      autoprefixer: 10.4.15(postcss@8.4.29)
+      postcss: 8.4.29
+      postcss-load-config: 4.0.1(postcss@8.4.29)
       tailwindcss: 3.3.1(postcss@8.4.21)
     transitivePeerDependencies:
       - ts-node
@@ -1303,19 +1303,19 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /autoprefixer@10.4.14(postcss@8.4.27):
-    resolution: {integrity: sha512-FQzyfOsTlwVzjHxKEqRIAdJx9niO6VCBCoEwax/VLSoQF29ggECcPuBqUMZ+u8jCZOPSy8b8/8KnuFbp0SaFZQ==}
+  /autoprefixer@10.4.15(postcss@8.4.29):
+    resolution: {integrity: sha512-KCuPB8ZCIqFdA4HwKXsvz7j6gvSDNhDP7WnUjBleRkKjPdvCmHFuQ77ocavI8FT6NdvlBnE2UFr2H4Mycn8Vew==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.10
-      caniuse-lite: 1.0.30001519
+      caniuse-lite: 1.0.30001525
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
-      postcss: 8.4.27
+      postcss: 8.4.29
       postcss-value-parser: 4.2.0
     dev: false
 
@@ -1476,6 +1476,10 @@ packages:
 
   /caniuse-lite@1.0.30001519:
     resolution: {integrity: sha512-0QHgqR+Jv4bxHMp8kZ1Kn8CH55OikjKJ6JmKkZYP1F3D7w+lnFXF70nG5eNfsZS89jadi5Ywy5UCSKLAglIRkg==}
+
+  /caniuse-lite@1.0.30001525:
+    resolution: {integrity: sha512-/3z+wB4icFt3r0USMwxujAqRvaD/B7rvGTsKhbhSQErVrJvkZCLhgNLJxU8MevahQVH6hCU9FsHdNUFbiwmE7Q==}
+    dev: false
 
   /capnp-ts@0.7.0:
     resolution: {integrity: sha512-XKxXAC3HVPv7r674zP0VC3RTXz+/JKhfyw94ljvF80yynK6VkTnqE3jMuN8b3dUVmmc43TjyxjW4KTsmB3c86g==}
@@ -3540,7 +3544,7 @@ packages:
       yaml: 1.10.2
     dev: false
 
-  /postcss-load-config@4.0.1(postcss@8.4.27):
+  /postcss-load-config@4.0.1(postcss@8.4.29):
     resolution: {integrity: sha512-vEJIc8RdiBRu3oRAI0ymerOn+7rPuMvRXslTvZUKZonDHFIczxztIyJ1urxM1x9JXEikvpWWTUUqal5j/8QgvA==}
     engines: {node: '>= 14'}
     peerDependencies:
@@ -3553,7 +3557,7 @@ packages:
         optional: true
     dependencies:
       lilconfig: 2.1.0
-      postcss: 8.4.27
+      postcss: 8.4.29
       yaml: 2.3.1
     dev: false
 
@@ -3806,6 +3810,15 @@ packages:
 
   /postcss@8.4.27:
     resolution: {integrity: sha512-gY/ACJtJPSmUFPDCHtX78+01fHa64FaU4zaaWfuh1MhGJISufJAH4cun6k/8fwsHYeK4UQmENQK+tRLCFJE8JQ==}
+    engines: {node: ^10 || ^12 || >=14}
+    dependencies:
+      nanoid: 3.3.6
+      picocolors: 1.0.0
+      source-map-js: 1.0.2
+    dev: false
+
+  /postcss@8.4.29:
+    resolution: {integrity: sha512-cbI+jaqIeu/VGqXEarWkRCCffhjgXc0qjBtXpqJhTBohMUjUQnbBr0xqX3vEKudc4iviTewcJo5ajcec5+wdJw==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.6
