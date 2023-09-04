@@ -11,7 +11,7 @@
     "publish": "pnpm build && wrangler pages deploy dist"
   },
   "dependencies": {
-    "@astrojs/image": "^0.17.0",
+    "@astrojs/image": "^0.18.0",
     "@astrojs/prefetch": "^0.4.0",
     "@astrojs/sitemap": "^3.0.0",
     "@astrojs/tailwind": "^4.0.0",
