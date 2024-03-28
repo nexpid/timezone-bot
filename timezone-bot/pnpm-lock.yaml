@@ -10,7 +10,7 @@ dependencies:
     version: 0.3.0
   discord-api-types:
     specifier: ^0.37.42
-    version: 0.37.42
+    version: 0.37.77
 
 packages:
 
@@ -20,8 +20,8 @@ packages:
       mime: 3.0.0
     dev: false
 
-  /discord-api-types@0.37.42:
-    resolution: {integrity: sha512-1Huaj9cQ1W7/uryS8MZs/tZemnoKB94thM1cE40lep3rpU3q7WHqkdjN/veX0prTkYlPhcyLd/DeF/pBO8X8oQ==}
+  /discord-api-types@0.37.77:
+    resolution: {integrity: sha512-AkEn9nZA5w/XJ8wzKzlpx3X+MToQCowKahftF1+KYnMWnuglCrVRojy1XlIWX8Frgp1v8INceGKpvDkbvMLJ4g==}
     dev: false
 
   /mime@3.0.0:
